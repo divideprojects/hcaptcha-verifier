@@ -2,6 +2,7 @@ from os import getcwd
 from typing import Optional
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from prettyconf import Configuration
 from prettyconf.loaders import EnvFile, Environment
 from pydantic import BaseModel
@@ -13,6 +14,14 @@ config = Configuration(loaders=[Environment(), EnvFile(filename=env_file)])
 
 # define the app
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins="*",
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 # get the secret for account from ENV
 HCAPTCHA_SECRET = config(
