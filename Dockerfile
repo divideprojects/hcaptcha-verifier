@@ -24,4 +24,4 @@ COPY --from=deb-extractor /dpkg /
 COPY --from=build-venv /venv /venv
 COPY . .
 ENTRYPOINT ["doppler", "run", "--"]
-CMD ["/venv/bin/uvicorn","main:app", "--host", "0.0.0.0", "--port", "80", "--proxy-headers"]
+CMD ["/venv/bin/uvicorn", "app:app", "--host", "0.0.0.0", "--port", "80", "--proxy-headers"]

@@ -2,7 +2,7 @@ test:
 	@pre-commit run --all-files
 
 run:
-	@uvicorn main:app --reload
+	@uvicorn app:app --reload
 
 clean:
 	@pyclean .
