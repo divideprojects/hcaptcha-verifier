@@ -36,9 +36,15 @@ class Verification(BaseModel):
     secret_key: Optional[str] = HCAPTCHA_TOKEN_TEST
 
 
+# define the '/alive' endpoint
+@app.get("/alive")
+async def alive():
+    return {"status": "alive"}
+
+
 # Data to show when the user visits the verify url
 @app.post("/verify")
-def read_item(v: Verification):
+async def verify_item(v: Verification):
     dict_data = v.dict()
     token = dict_data["token"]
     secret_key = (
