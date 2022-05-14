@@ -60,7 +60,7 @@ async def verify_item(v: Verification):
         "response": token,
         "secret": secret_key,
     }
-    r = post("https://hcaptcha.com/siteverify", data=data)
+    r = post(HCAPTCHA_URL, data=data)
     return r.json()
 
 
