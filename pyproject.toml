@@ -7,7 +7,7 @@ authors = ["Divanshu Chauhan <23524935+Divkix@users.noreply.github.com>"]
 [tool.poetry.dependencies]
 python = "^3.7"
 fastapi = "^0.78.0"
-uvicorn = {extras = ["standard"], version = "^0.17.6"}
+uvicorn = {extras = ["standard"], version = "^0.18.0"}
 prettyconf = "^2.2.1"
 requests = "^2.27.1"
 
