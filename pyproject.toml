@@ -12,7 +12,7 @@ prettyconf = "^2.2.1"
 requests = "^2.27.1"
 
 [tool.poetry.dev-dependencies]
-black = "^22.3.0"
+black = "^22.6.0"
 pylint = "^2.13.9"
 pre-commit = "^2.19.0"
 isort = "^5.10.1"
