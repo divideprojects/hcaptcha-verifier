@@ -3,7 +3,6 @@ from typing import Optional
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
 from prettyconf import Configuration
 from prettyconf.loaders import EnvFile, Environment
 from pydantic import BaseModel
@@ -62,7 +61,3 @@ async def verify_item(v: Verification):
     }
     r = post(HCAPTCHA_URL, data=data)
     return r.json()
-
-
-# Data to show when the user visits the homepage
-app.mount("/", StaticFiles(directory="static", html=True), name="static")
