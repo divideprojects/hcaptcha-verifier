@@ -1,5 +1,5 @@
 // get the secret for account from ENV
-const hcaptcha_token_test = '0x0000000000000000000000000000000000000000'
+const hcaptcha_test_token = '0x0000000000000000000000000000000000000000'
 const hcaptcha_url = 'https://hcaptcha.com/siteverify'
 
 async function handlePost(request) {
@@ -15,7 +15,7 @@ async function handlePost(request) {
       secret_key:
         object['secret_key'] != null
           ? object['secret_key']
-          : hcaptcha_token_test,
+          : hcaptcha_test_token,
       token: object['token'],
     }
   }
@@ -29,10 +29,11 @@ async function handleGet(_) {
 
 addEventListener('fetch', event => {
   const { request } = event
-
   if (request.method === 'POST') {
+    console.info('Token check!')
     return event.respondWith(handlePost(request))
   } else if (request.method === 'GET') {
+    console.info('Alive status check!')
     return event.respondWith(handleGet(request))
   }
 })
