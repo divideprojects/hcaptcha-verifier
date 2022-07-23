@@ -2,25 +2,25 @@
 const hcaptcha_test_token = '0x0000000000000000000000000000000000000000'
 const hcaptcha_url = 'https://hcaptcha.com/siteverify'
 
-async function handlePost(request) {
-  const { headers } = request
-  const contentType = headers.get('content-type') || ''
-  body = {}
+// function to send a post request to hcaptcha_url with body as secret and response which is the token
+// return the response from hcaptcha_url
+// if the response is true then return true else return false
+async function verifyCaptcha(secret, token) {
+  const response = await fetch(hcaptcha_url, {
+    method: 'POST',
+    body: new URLSearchParams({
+      response: token,
+      secret: secret,
+    }),
+  })
+  return response
+}
 
-  if (contentType.includes('form')) {
-    const formData = await request.formData()
-    var object = {}
-    formData.forEach((value, key) => (object[key] = value))
-    body = {
-      secret_key:
-        object['secret_key'] != null
-          ? object['secret_key']
-          : hcaptcha_test_token,
-      token: object['token'],
-    }
-  }
-  const postReq = await fetch(hcaptcha_url, (data = body))
-  return new Response(JSON.stringify(await postReq.json()))
+// function to handler post request
+async function handlePost(request) {
+  const object = await request.json()
+  const postReq = await verifyCaptcha(object.secret_key, object.token)
+  return new Response(JSON.stringify(await postReq.json(), null, 2))
 }
 
 async function handleGet(_) {
