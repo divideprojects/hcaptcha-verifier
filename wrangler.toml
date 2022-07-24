@@ -1,5 +1,6 @@
 name = "hcaptcha-verifier-workers"
 type = "javascript"
+main = "./src/index.ts"
 
 account_id = ""
 workers_dev = true
