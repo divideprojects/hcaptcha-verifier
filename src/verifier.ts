@@ -1,3 +1,5 @@
+import { Context } from 'hono'
+
 // get the secret for account from ENV
 const hcaptcha_test_token = '0x0000000000000000000000000000000000000000'
 const hcaptcha_url = 'https://hcaptcha.com/siteverify'
@@ -16,7 +18,8 @@ async function verifyCaptcha(secret: string, token: string) {
   return response
 }
 
-async function hCaptchaVerifier(c, _) {
+// function to verify the captcha
+async function hCaptchaVerifier(c: Context, _) {
   const object = await c.req.json()
   const postReq = await verifyCaptcha(object.secret_key, object.token)
   return new Response(JSON.stringify(await postReq.json(), null, 2))
