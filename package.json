@@ -3,10 +3,11 @@
   "name": "hcaptcha-verifier-workers",
   "version": "1.0.0",
   "description": "A template for kick starting a Cloudflare Workers project",
-  "main": "index.js",
+  "main": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier --config .prettierrc 'src/**/*.{ts,js,json,md,css}' --write"
+    "format": "prettier --config .prettierrc 'src/**/*.{ts,js,json,md,css}' --write",
+    "dev": "npx wrangler dev -l"
   },
   "author": "Divanshu Chauhan <23524935+Divkix@users.noreply.github.com>",
   "license": "MIT",
