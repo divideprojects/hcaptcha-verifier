@@ -3,9 +3,9 @@ import { cors } from 'hono/cors'
 import hCaptchaVerifier from './verifier'
 import { prettyJSON } from 'hono/pretty-json'
 
-// Create a new hono client
+// Create a new hono client and initiate middlewares
 const app = new Hono()
-app.use('*', prettyJSON())
+app.use('*', prettyJSON({ space: 2 }))
 app.use('*', cors())
 
 // main page of api
