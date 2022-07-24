@@ -6,6 +6,7 @@ import hCaptchaVerifier from './verifier'
 import pingBack from './ping-back'
 import searchYoutube from './yt-search'
 import cryptoPrices from './crypto'
+import carbonIt from './carbon'
 
 // Create a new hono client and initiate middlewares
 const app = new Hono()
@@ -30,6 +31,9 @@ app.get('/ytsearch', searchYoutube)
 
 // ceypto endpoint
 app.get('/crypto', cryptoPrices)
+
+// carbon code
+app.get('/carbon', carbonIt)
 
 // if user goes anywhere else, give 404 error
 app.notFound(c => c.json({ error: 'Not Found' }, 404))
