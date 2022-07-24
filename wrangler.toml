@@ -1,9 +1,4 @@
-name = "hcaptcha-verifier-workers"
-type = "javascript"
+name = "api"
 main = "./src/index.ts"
-
-account_id = ""
 workers_dev = true
-route = ""
-zone_id = ""
 compatibility_date = "2022-07-22"
