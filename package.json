@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --config .prettierrc 'src/**/*.{ts,js,json,md,css}' --write",
-    "dev": "npx wrangler dev -l"
+    "dev": "wrangler dev -l"
   },
   "author": "Divanshu Chauhan <23524935+Divkix@users.noreply.github.com>",
   "license": "MIT",
