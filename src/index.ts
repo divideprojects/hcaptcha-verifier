@@ -1,10 +1,11 @@
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
+import { prettyJSON } from 'hono/pretty-json'
 import hCaptchaVerifier from './verifier'
 import pingBack from './ping-back'
-import { prettyJSON } from 'hono/pretty-json'
 import searchYoutube from './yt-search'
+import cryptoPrices from './crypto'
 
 // Create a new hono client and initiate middlewares
 const app = new Hono()
@@ -26,6 +27,9 @@ app.get('/pingback', pingBack)
 
 // search youtube
 app.get('/ytsearch', searchYoutube)
+
+// ceypto endpoint
+app.get('/crypto', cryptoPrices)
 
 // if user goes anywhere else, give 404 error
 app.notFound(c => c.json({ error: 'Not Found' }, 404))
