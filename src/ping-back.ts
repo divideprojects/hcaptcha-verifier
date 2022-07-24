@@ -3,7 +3,7 @@ import { Context } from 'hono'
 // function to ping a url with a body
 async function pingBack(c: Context) {
   let link: string = await c.req.query('link')
-  let method: string = await c.req.query('method')
+  let method: string = (await c.req.query('method')) || 'get'
 
   // check if link and method are set
   if (link == (null || '') || method == (null || '')) {
