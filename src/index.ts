@@ -4,6 +4,7 @@ import { logger } from 'hono/logger'
 import hCaptchaVerifier from './verifier'
 import pingBack from './ping-back'
 import { prettyJSON } from 'hono/pretty-json'
+import searchYoutube from './yt-search'
 
 // Create a new hono client and initiate middlewares
 const app = new Hono()
@@ -22,6 +23,9 @@ app.post('/verify', hCaptchaVerifier)
 
 // handler ping back requests
 app.get('/pingback', pingBack)
+
+// search youtube
+app.get('/ytsearch', searchYoutube)
 
 // if user goes anywhere else, give 404 error
 app.notFound(c => c.json({ error: 'Not Found' }, 404))

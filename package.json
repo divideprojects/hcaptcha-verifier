@@ -16,6 +16,7 @@
     "prettier": "^1.19.1"
   },
   "dependencies": {
-    "hono": "^2.0.4"
+    "hono": "^2.0.4",
+    "youtube-sr": "^4.2.0"
   }
 }
