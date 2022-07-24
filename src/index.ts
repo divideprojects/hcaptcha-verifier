@@ -1,5 +1,6 @@
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
+import { logger } from 'hono/logger'
 import hCaptchaVerifier from './verifier'
 import { prettyJSON } from 'hono/pretty-json'
 
@@ -7,6 +8,7 @@ import { prettyJSON } from 'hono/pretty-json'
 const app = new Hono()
 app.use('*', prettyJSON({ space: 2 }))
 app.use('*', cors())
+app.use('*', logger())
 
 // main page of api
 app.get('/', async c => c.html(`<h1>Welcome to the Divide API</h1>`))
