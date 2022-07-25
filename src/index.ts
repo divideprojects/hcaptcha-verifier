@@ -7,6 +7,7 @@ import pingBack from './ping-back'
 import searchYoutube from './yt-search'
 import cryptoPrices from './crypto'
 import carbonIt from './carbon'
+import executeCode, { getLanguages } from './piston'
 
 // Create a new hono client and initiate middlewares
 const app = new Hono()
@@ -34,6 +35,12 @@ app.get('/crypto', cryptoPrices)
 
 // carbon code
 app.get('/carbon', carbonIt)
+
+// execute code
+const execute = new Hono()
+execute.get('/', executeCode)
+execute.get('/languages', getLanguages)
+app.route('/execute', execute)
 
 // if user goes anywhere else, give 404 error
 app.notFound(c => c.json({ error: 'Not Found' }, 404))
