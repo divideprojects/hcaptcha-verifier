@@ -2,13 +2,16 @@ import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
 import { prettyJSON } from 'hono/pretty-json'
-import hCaptchaVerifier from './verifier'
-import pingBack from './ping-back'
-import searchYoutube from './yt-search'
-import cryptoPrices from './crypto'
-import carbonIt from './carbon'
-import executeCode, { getLanguages } from './piston'
-import shortenLink from './shorten'
+import {
+  hCaptchaVerifier,
+  pingBack,
+  searchYoutube,
+  cryptoPrices,
+  carbonIt,
+  executeCode,
+  getLanguages,
+  shortenLink,
+} from './modules'
 
 // Create a new hono client and initiate middlewares
 const app = new Hono()
