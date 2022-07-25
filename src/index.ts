@@ -8,6 +8,7 @@ import searchYoutube from './yt-search'
 import cryptoPrices from './crypto'
 import carbonIt from './carbon'
 import executeCode, { getLanguages } from './piston'
+import shortenLink from './shorten'
 
 // Create a new hono client and initiate middlewares
 const app = new Hono()
@@ -41,6 +42,9 @@ const execute = new Hono()
 execute.get('/', executeCode)
 execute.get('/languages', getLanguages)
 app.route('/execute', execute)
+
+// url shortner
+app.get('/shorten', shortenLink)
 
 // if user goes anywhere else, give 404 error
 app.notFound(c => c.json({ error: 'Not Found' }, 404))
